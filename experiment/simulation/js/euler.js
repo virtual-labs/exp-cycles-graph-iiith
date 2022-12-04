@@ -38,6 +38,7 @@ function validate(a, b) {
     return false;
 }
 
+
 function validatehelper(a, b) {
     if (a === b) return true;
     if (a == null || b == null) return true;
@@ -53,21 +54,24 @@ var relation = {
     nodes: [
         [1, 2, 3, 4, 5],
         [1, 2, 3, 4, 5],
-        [1,2,3,4]
+        [1,2,3,4],
+        
     ],
     edges: [
-        [ [1, 2],[2, 3],[1, 4],[2, 4],[2, 5],[3, 5],[4,5]],
-        [ [1, 2],[2, 3],[1, 4],[2, 4],[2, 5],[3, 5]],
-        [ [1,2],[1,3],[1,4],[2,3],[3,4] ]
+        [ [1, 2],[1, 3],[2, 3],[1, 4],[4,5]],
+        [ [1, 2],[1,3],[2, 3],[1, 4],[4, 5],[1, 5]],
+        [[1,2],[2,3],[1,3]],
+       
     ],
 
-    
-    ham: [
-        ["1-2", "2-3", "3-5", "4-5","1-4"],
+    eul: [
         [],
-        ["1-2", "2-3", "3-4","1-4"],
+        ["1-2", "2-3","1-3", "1-4","4-5", "1-5"],
+        ["1-2", "2-3","1-3"],
 
     ],
+    ans:["N","N","Y"],
+
     trans: [
         {"1-3":"{1-2 , 2-3}", "1-4":"1-2 , 2-3 & 3-4", "1-5":"1-2 , 2-3 , 3-4 & 4-5", "2-4":"2-3 & 3-4","2-5":"2-3 , 3-4 & 4-5","3-5":"3-4 & 4-5"},
         {"1-4":"1-2 & 2-4", "1-6":"1-2 & 2-6; 1-3 & 3-6", "1-12":"1-2,2-6,6-12; 1-2,2-4,4-12; 1-3,3-6,6-12", "3-12":"3-6,6-12" },
@@ -80,9 +84,10 @@ var relation = {
 // number of examples
 var i  = getRandomInt(relation.nodes.length)
 
-var ham_edges = relation.ham[i]
+var eul_edges = relation.eul[i]
 var cedges=[]
 var trans_msg = relation.trans[i];
+var yn = relation.ans[i];
 // Create cytoscape nodes
 var cy_nodes = relation.nodes[i].map((x) => {
     return { data: { id: `${x}` } };
@@ -181,33 +186,63 @@ cy.on("tap", "edge", function (event) {
     
 });
 
-document.querySelector('#submit').addEventListener('click', function() {
-    console.log(cedges);
-    console.log(ham_edges);
-    if(cedges.length==0 && ham_edges.length==0){
+document.querySelector('#eul').addEventListener('click', function() {
+
+    if(yn=="Y"){
         observ.innerHTML = "<font size=4 color=green>" +
             "<b>Correct</b>" +
             "</font>" +
-            "<br>"+"Following graph does not contain any Hamiltonian Cycle";
+            "<br>"+"Following graph is Eulerian";
+    }
+    else {
+        observ.innerHTML =  "<font size=4 color=red>" +
+        "<b>WRONG</b>" +
+        "</font>" +"<br><br>"+"Graph is not Eulerian";
+    }
+});
+
+document.querySelector('#noteul').addEventListener('click', function() {
+
+    if(yn=="N"){
+        observ.innerHTML = "<font size=4 color=green>" +
+            "<b>Correct</b>" +
+            "</font>" +
+            "<br>"+"Following graph is not Eulerian";
+    }
+    else {
+        observ.innerHTML =  "<font size=4 color=red>" +
+        "<b>WRONG</b>" +
+        "</font>" +"<br><br>"+"Graph is Eulerian";
+    }
+});
+
+document.querySelector('#submit').addEventListener('click', function() {
+    console.log(cedges);
+    console.log(eul_edges);
+    if(cedges.length==0 && eul_edges.length==0){
+        observ.innerHTML = "<font size=4 color=green>" +
+            "<b>Correct</b>" +
+            "</font>" +
+            "<br>"+"Following graph is not Eulerian";
     }
 
-    else if(validate(cedges,ham_edges) || validate(cedges.reverse(),ham_edges)){
+    else if(validate(cedges,eul_edges) || validate(cedges.reverse(),eul_edges)){
         if(cedges.length>2){
             //console.log(cedges)
             observ.innerHTML = "<font size=4 color=green>" +
             "<b>Correct</b>" +
             "</font>" +
-            "<br>"+"It is a Hamiltonian Cycle";
+            "<br>"+"Graph is a Euler Cycle";
         }
         
     }
     else{
-        if(validatenoorder(cedges,ham_edges)){
+        if(validatenoorder(cedges,eul_edges)){
             observ.innerHTML =  "<font size=4 color=red>" +
             "<b>WRONG</b>" +
             "</font>" +
             "<br><br>"+"Try again!"+
-            "<br><br>"+"draw the edges in correct order to form a Hamiltonian Cycle. ";
+            "<br><br>"+"draw the edges in correct order to form a Euler Cycle. ";
         }
         else {
             observ.innerHTML =  "<font size=4 color=red>" +

@@ -1,1 +1,97 @@
-/* You CSS goes in here */
+
+
+/* disabling text selection */
+body {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
+  
+  text {
+    pointer-events:none;
+  }
+  
+  
+  .container {
+    margin-top: 1%;
+  }
+  
+  .column {
+    text-align: center;
+  }
+  
+  #cy {
+    position: absolute;
+    width: 45%;
+    height: 50%;
+    margin: 5px;
+    top: 33%;
+    left: 28%;
+  
+    border: 0.2rem solid black;
+  }
+  
+  
+  .success-message {
+    font-size: 1.2rem;
+    color: rgb(31, 170, 31);
+    font-weight: bold;
+  }
+  
+  .failure-message {
+    font-size: 1.2rem;
+    color: rgb(228, 23, 23);
+    font-weight: bold;
+  }
+  
+  .highlight {
+    border:3px solid red;
+    box-shadow: 0 0 10px #719ECE;
+  }
+  
+  /* for dropping instruction box  */
+  
+  .instructions-box {
+    max-height: 50px;
+    overflow: hidden;
+    transition: all .5s ease;
+   
+  }
+  
+  .instructions-box.expand {
+    max-height: 400px;
+  }
+  
+  .v-instruction-container {
+    border: .2rem solid #97d23d;
+    justify-content: flex-start;
+  }
+  
+  #observations {
+    font-size: 1.25em;
+  }
+  
+  
+  .success-table{
+    font-size: 1rem;
+    color: rgb(31, 170, 31);
+    font-weight: bold;
+  }
+  
+  .failure-table{
+    font-size: 1rem;
+    color: rgb(228, 23, 23);
+    font-weight: bold;
+  }
+  
+  .bold-table{
+    font-weight: bold;
+  }
+  
+  
+  
+  

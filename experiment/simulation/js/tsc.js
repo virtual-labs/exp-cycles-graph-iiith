@@ -38,6 +38,7 @@ function validate(a, b) {
     return false;
 }
 
+
 function validatehelper(a, b) {
     if (a === b) return true;
     if (a == null || b == null) return true;
@@ -56,18 +57,23 @@ var relation = {
         [1,2,3,4]
     ],
     edges: [
-        [ [1, 2],[2, 3],[1, 4],[2, 4],[2, 5],[3, 5],[4,5]],
-        [ [1, 2],[2, 3],[1, 4],[2, 4],[2, 5],[3, 5]],
-        [ [1,2],[1,3],[1,4],[2,3],[3,4] ]
+        [ [1, 2,1],[2, 3,1],[1, 4,1],[2, 4,1],[2, 5,1],[3, 5,1],[4,5,1]],
+        [ [1, 2,10],[2, 3,10],[1, 4,10],[2, 4,10],[2, 5,10],[3, 5,10]],
+        [ [1,2,10],[1,3,15],[1,4,20],[2,3,35],[2,4,25],[3,4,30] ]
     ],
 
-    
-    ham: [
+    tsc: [
         ["1-2", "2-3", "3-5", "4-5","1-4"],
         [],
-        ["1-2", "2-3", "3-4","1-4"],
+        ["1-2", "2-4", "3-4","1-3"],
 
     ],
+    pos:[
+        [[1,215,85],[2,400,85],[3,215,150],[4,400,150],[5,500,200]],
+        [[1,215,85],[2,400,85],[3,215,150],[4,400,150],[5,500,200]],
+        [[1,215,85],[2,400,85],[3,215,150],[4,400,150]],
+    ],
+
     trans: [
         {"1-3":"{1-2 , 2-3}", "1-4":"1-2 , 2-3 & 3-4", "1-5":"1-2 , 2-3 , 3-4 & 4-5", "2-4":"2-3 & 3-4","2-5":"2-3 , 3-4 & 4-5","3-5":"3-4 & 4-5"},
         {"1-4":"1-2 & 2-4", "1-6":"1-2 & 2-6; 1-3 & 3-6", "1-12":"1-2,2-6,6-12; 1-2,2-4,4-12; 1-3,3-6,6-12", "3-12":"3-6,6-12" },
@@ -80,7 +86,7 @@ var relation = {
 // number of examples
 var i  = getRandomInt(relation.nodes.length)
 
-var ham_edges = relation.ham[i]
+var tsc_edges = relation.tsc[i]
 var cedges=[]
 var trans_msg = relation.trans[i];
 // Create cytoscape nodes
@@ -90,7 +96,7 @@ var cy_nodes = relation.nodes[i].map((x) => {
 
 var cy_edges = relation.edges[i].map((x) => {
     return {
-        data: { id: `${x[0]}-${x[1]}`, source: `${x[0]}`, target: `${x[1]}` }
+        data: { id: `${x[0]}-${x[1]}`, source: `${x[0]}`, target: `${x[1]}`, label: `${x[2]}`}
     };
 });
 
@@ -111,7 +117,7 @@ var cy = (window.cy = cytoscape({
         selector: "node",
         style: {
             content: "data(id)",
-            "text-opacity": 0.5,
+            "text-opacity": 0.4,
             "text-valign": "center",
             "text-halign": "right",
             "background-color": "#11479e"
@@ -122,8 +128,12 @@ var cy = (window.cy = cytoscape({
         selector: "edge",
         style: {
             "curve-style": "bezier",
-            width: 5,
-            
+            "width": 5,
+            "text-margin-x":-5,
+            "text-margin-y":-5,
+            "text-opacity": 0.8,
+            "font-size":12,
+            'label': 'data(label)',
             "line-color": "#9dbaea",
             "target-arrow-color": "#9dbaea"
         }
@@ -183,31 +193,31 @@ cy.on("tap", "edge", function (event) {
 
 document.querySelector('#submit').addEventListener('click', function() {
     console.log(cedges);
-    console.log(ham_edges);
-    if(cedges.length==0 && ham_edges.length==0){
+    console.log(tsc_edges);
+    if(cedges.length==0 && tsc_edges.length==0){
         observ.innerHTML = "<font size=4 color=green>" +
             "<b>Correct</b>" +
             "</font>" +
-            "<br>"+"Following graph does not contain any Hamiltonian Cycle";
+            "<br>"+"Following graph does not contain any Hamiltonian Cycle, so No TSP";
     }
 
-    else if(validate(cedges,ham_edges) || validate(cedges.reverse(),ham_edges)){
+    else if(validate(cedges,tsc_edges) || validate(cedges.reverse(),tsc_edges)){
         if(cedges.length>2){
             //console.log(cedges)
             observ.innerHTML = "<font size=4 color=green>" +
             "<b>Correct</b>" +
             "</font>" +
-            "<br>"+"It is a Hamiltonian Cycle";
+            "<br>"+"It is a TSP Cycle";
         }
         
     }
     else{
-        if(validatenoorder(cedges,ham_edges)){
+        if(validatenoorder(cedges,tsc_edges)){
             observ.innerHTML =  "<font size=4 color=red>" +
             "<b>WRONG</b>" +
             "</font>" +
             "<br><br>"+"Try again!"+
-            "<br><br>"+"draw the edges in correct order to form a Hamiltonian Cycle. ";
+            "<br><br>"+"draw the edges in correct order to form a TSP Cycle. ";
         }
         else {
             observ.innerHTML =  "<font size=4 color=red>" +

@@ -89,9 +89,6 @@
               <div id="observations"></div>
           </div>
 		  <div class="v-datalist-row">
-              
-			  <button class="v-button" id="submit">Submit</button>
-              <br><br>
               <button class="v-button" id="eul">Eulerian</button>
               <br><br>
               <button class="v-button" id="noteul">Not Eulerian</button>
@@ -102,7 +99,8 @@
 
     <script>
         function Refresh() {
-            window.parent.location = window.parent.location.href;
+            location.reload();
+            //window.parent.location = window.parent.location.href;
         }
     </script>
 

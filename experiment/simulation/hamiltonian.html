@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Traveling Salesperson Cycle: Practice</title>
+	<title>Hamailtonian: Practice</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
 	<link rel="stylesheet" href="./css/main.css">
 	
@@ -23,22 +23,23 @@
 			<div class="column">
 				<div class="v-tabs">
 					<ul>
-						
-						<li id="Task1" onclick="window.location.href = 'hamiltonian.html';">
+						<li class="is-active" id="Task1">
 							<a>
-								Hamailtonian Cycle
+								Hamiltonian Cycle
 							</a>
 						</li>
+
 						<li id="Task2" onclick="window.location.href = 'euler.html';">
 							<a>
-								Euler Cycle 
+								Euler Cycle
 							</a>
 						</li>
-                        <li class="is-active" id="Task3">
+						<li id="Task3" onclick="window.location.href = 'travelingsalesperson.html';">
 							<a>
 								Traveling Salesperson Cycle
 							</a>
 						</li>
+						
 					</ul>
 				</div>
 			</div>
@@ -50,15 +51,13 @@
 		<div class="columns is-centered">
 			<div class="column">
 				<div class="v-collapsible-instruction-container v-instruction-container">
-					<div id="instruction-title" class="v-collapsible is-size-5">Instructions<br>Find the edges in Hasse diagram</div>
+					<div id="instruction-title" class="v-collapsible is-size-5">Instructions<br>Find Hamiltonian Cycle</div>
 					<div class="v-content" style="text-align: left; padding-left: 5%; padding-right: 5%;">
 						<ul style="list-style: disc;">
-							<li>Click the edges that belong to the Hasse Diagram.</li>
-              				<li>Correct edges turns GREEN.</li>
-              				<li>Wrong edges turns RED.</li>
-              				<li>Refer to the message dispalayed</li>
+							<li>Click the edges to select.</li>
+              				<li>Selcet edges of hamiltonain cycle in order.</li>
+              				<li><strong>Submit: </strong>To validate if the selected path is hamiltonain cycle.</li>
               				<li>Click <strong>Change Graph</strong> to get new graph</li>
-              				<li>For better experience collapse instructions befor starting</li>
 
 						</ul>
 					</div>
@@ -72,6 +71,7 @@
 				<div class="v-datalist-title">Controls</div>
 				<div class="v-datalist-row">
 					<button class="v-button" onclick="Refresh()">Change Graph</button>
+					
 				</div>
 			</div>
 		</div>
@@ -92,13 +92,14 @@
 			
 			  <button class="v-button" id="submit">Submit</button>
 	      </div>
+		  
       </div>
   </div>
   </div>
 
     <script>
         function Refresh() {
-            location.reload();
+			location.reload();
             //window.parent.location = window.parent.location.href;
         }
     </script>
@@ -114,7 +115,7 @@
 	
 
 	<script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
-	<script type="module" src="./js/tsc.js"></script>
+	<script type="module" src="./js/main.js"></script>
 
 </body>
 

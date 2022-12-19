@@ -44,15 +44,19 @@ Consider the graph with edges E−Ev and whatever vertices still have an edge ad
 Since our graph was connected originally, each of these sub-circuits shares a vertex with out Ev walk. We can join these together at the shared vertex to form a circuit of all edges in G.
 
 An example will help. Suppose we have the graph below start at b and find the initial walk highlighted.
+
 ![Example](images/ex2a.png)
 
 That leaves us with this two-component graph to apply the inductive hypothesis to:
+
 ![Example](images/ex2b.png)
 
 So we find a Euler circuit in each component:
+
 ![Example](images/ex2c.png)
 
 We combine to form a Euler circuit of the original by following one of the component-circuits whenever we can:
+
 ![Example](images/ex2d.png)
 
 ***Corollary:*** A graph has an Eulerian circuit if and only if it is connected and all of its vertices have even degree.
@@ -79,6 +83,7 @@ It seems like finding a Hamilton circuit (or conditions for one) should be more-
  - Unfortunately, it's much harder.
 
 For example, the two graphs above have Hamilton paths but not circuits:
+
 ![Example](images/ex3.png)
 
   - but I have no obvious proof that they don't.
@@ -97,7 +102,9 @@ By the pigeonhole principle, there must be vertices adjacent to the ends of the 
 
 Note that these conditions are sufficient but not necessary: there are graphs that have Hamilton circuits but do not meet these conditions.
  - C6 for example (cycle with 6 vertices): each vertex has degree 2 and 2<6/2, but there is a Ham cycle.
+
 ![Example](images/ex4.png)
+
 There are no nice necessary-and-sufficient conditions known for a graph to have a Hamilton circuit.
  - Just a few more that give imperfect conditions on one side or the other.
 
@@ -123,6 +130,7 @@ In this case, the graph is probably complete (or nearly complete).
  - The question here is more about finding the best route.
 
 For example, this graph has relatively few Hamilton circuit: we can basically just decide to go around the outside and in to f whenever we want:
+
 ![Example](images/ex5.png)
 
  - Even with that observation, the best solution I can think of is: check every possibility.

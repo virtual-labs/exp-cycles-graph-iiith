@@ -202,19 +202,45 @@ document.querySelector('#submit').addEventListener('click', function() {
         
     }
     else{
-        if(validatenoorder(cedges,ham_edges)){
+
+        if(cedges.length!=0 && ham_edges.length==0){
+            observ.innerHTML =  "<font size=4 color=red>" +
+            "<b>WRONG</b>" +
+            "</font>" +
+            "<br><br>"+"Wrong"+
+            "<br>"+"Following graph does not contain any Hamiltonian Cycle "+
+            "<br>"+"no closed path that meets each node exactly once except before reaching starting node"
+           
+               
+        }
+        else if(validatenoorder(cedges,ham_edges)){
             observ.innerHTML =  "<font size=4 color=red>" +
             "<b>WRONG</b>" +
             "</font>" +
             "<br><br>"+"Try again!"+
-            "<br><br>"+"draw the edges in correct order to form a Hamiltonian Cycle. ";
+            "<br><br>"+"Path is correct but draw the edges in correct order to form a Hamiltonian Cycle. ";
         }
         else {
+
+            if(cedges.length==0 && ham_edges.length==0){
+                observ.innerHTML =  "<font size=4 color=red>" +
+                "<b>WRONG</b>" +
+                "</font>" +
+                "<br><br>"+"Try again!"+
+                "<br><br>"+"Wrong path"+
+                "<br>"+"Following graph does not contain any Hamiltonian Cycle "+
+                "<br>"+"no closed path that meets each node exactly once except before reaching starting node"
+               
+                   
+            }
+            else{
             observ.innerHTML =  "<font size=4 color=red>" +
             "<b>WRONG</b>" +
             "</font>" +
             "<br><br>"+"Try again!"+
-            "<br><br>"+"Wrong path";
+            "<br><br>"+"The graph should be closed and meet each node exactly once except starting node";
+            
+    }
         }
     }
 

@@ -2,35 +2,86 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "The _____ of a graph G consist of all vertices and edges of G",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "edge graph",
+        "b": "line graph",
+        "c": "path complement graph",
+        "d": "eulerian graph"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": "Eulerian circuit in a graph G is a circuit that includes all vertices and edges of G."
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "A given connected graph G is a Euler Graph if and only if all vertices of G are of",
+      "answers": {
+        "a": "Same degree",
+        "b": "Even degree",
+        "c": "Odd degree",
+        "d": "Different degree"
+      },
+      "explanations": {
+        "a": "",
+        "b": "A given connected graph G is a Euler Graph if and only if all vertices of G are of even degree and if exactly two nodes have odd degree then the graph has Euler path but not Euler circuit.",
+        "c": "",
+        "d": ""
+      },
+      "correctAn?swer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "A ____ in a graph G is a circuit which consists of every vertex(except first/last vertex) of G exactly once",
+      "answers": {
+        "a": "Euler path",
+        "b": "Hamiltonian path",
+        "c": "Planar graph",
+        "d": "Path complement graph"
+      },
+      "explanations": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Let a graph cab ne denoted as bcdefb a kind of ____",
+      "answers": {
+        "a": "cycle graph",
+        "b": "line graph",
+        "c": "hamiltonian graph",
+        "d": "path graph"
+      },
+      "explanations": {
+        "a": "In the graph bcdefb, no edges are repeated in the walk, which makes it a trail and the start and end vertex b is same making it a cycle graph",
+        "b": "",
+        "c": "",
+        "d": ""
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "How many edges are there in a complete graph of order 9?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "18",
+        "b": "72",
+        "c": "36",
+        "d": "45"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "",
+        "b": "",
+        "c": " In a complete graph of order n, there are n*(n-1)/2 number of edges and degree of each vertex is (n-1). Hence, for a graph of order 9 there should be 36 edges in total.",
+        "d": ""
       },
       "correctAnswer": "c",
       "difficulty": "beginner"

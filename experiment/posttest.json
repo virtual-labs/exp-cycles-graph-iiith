@@ -2,35 +2,86 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "The total number of Hamiltonian circuits in a complete undirected graph of n vertices will be ____ ",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "(n-1)!",
+        "b": "(n-1)!/2",
+        "c": "(n+1)!",
+        "d": "(n+1)!/2"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "",
+        "b": "",
+        "c": " ",
+        "d": ""
       },
-      "correctAnswer": "a",
+      "correctAnswer": "b",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "If G is a simple graph with n-vertices and n>=3, the condition for G has a Hamiltonian circuit is _________",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "the degree of each vertex is at most n/2",
+        "b": "the degree of each vertex is equal to n",
+        "c": "the degree of every vertex is at least n+1/2",
+        "d": "the degree of every vertex in G is at least n/2"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": " A simple circuit in a graph G that passes through every vertex exactly once is called a Hamiltonian circuit. If there is a vertex of degree one in a graph then it is impossible for it to have a Hamiltonian circuit. If G is a simple graph with n-vertices and n>=3 such that the degree of every vertex in G is at least n/2, then G has a Hamiltonian circuit."
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The time complexity to find a Eulerian path in a graph of vertex V and edge E is",
+      "answers": {
+        "a": "O(V^2)",
+        "b": "O(V+E-1)",
+        "c": "O(V+E)",
+        "d": "O(E+1)"
+      },
+      "explanations": {
+        "a": "",
+        "b": "",
+        "c": "An undirected graph has Eulerian Path if the following two conditions are true: -a) All vertices with a non-zero degree are connected. A graph of vertices with zero degrees don’t belong to Eulerian Cycle or Path, b) If two vertices have odd degree and all other vertices have even degree. Thus, the time to find whether a graph has a Eulerian path or not is O(V+E) with V vertices and E edges.",
+        "d": ""
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Consider a connected multigraph with 8 vertices has an Euler circuit. Which of the following degrees is possible for each vertex so that the graph has an Euler circuit?",
+      "answers": {
+        "a": "3",
+        "b": "4",
+        "c": "5",
+        "d": "7"
+      },
+      "explanations": {
+        "a": "",
+        "b": "A connected multigraph with at least two vertices has an Euler circuit if and only if each of its vertices has an even degree. Therefore, out of the given options, 4 is the degree possible for each vertex so that the graph has a Euler circuit.",
+        "c": "",
+        "d": ""
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The traveling salesman problem involves n cities with paths connecting the cities. The time taken for traversing through all the cities, without knowing in advance the length of a minimum tour, is",
+      "answers": {
+        "a": "O(n)",
+        "b": "O(n^2)",
+        "c": "O(n!)",
+        "d": "O(2^n)"
+      },
+      "explanations": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
       },
       "correctAnswer": "c",
       "difficulty": "beginner"

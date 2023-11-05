@@ -41,7 +41,7 @@ This process forms part of our circuit. Let $E_{v}$ be the set of edges visited 
 
 Consider the graph with edges $E−E_{v}$ and whatever vertices still have an edge adjacent. Each vertex in this graph has even degree (since we removed an even number from each) and it has less than $n$ edges. By strong induction, we can find an Euler circuit for each connected component of this graph.
 
-Since our graph was connected originally, each of these sub-circuits shares a vertex with out E_{v} walk. We can join these together at the shared vertex to form a circuit of all edges in G.
+Since our graph was connected originally, each of these sub-circuits shares a vertex with out $E_{v}$ walk. We can join these together at the shared vertex to form a circuit of all edges in G.
 
 An example will help. Suppose we have the graph below start at b and find the initial walk highlighted.
 
@@ -97,10 +97,10 @@ By the pigeonhole principle, there must be vertices adjacent to the ends of the 
 
 ***Corollary:*** (Dirac's Theorem) In a graph with $n \geq 3$ vertices, if each vertex has $deg(v) \geq n/2$, then the graph has a Hamilton circuit.
 
-***Proof:*** If a graph has $deg(v) \geq n/2$ for each vertex, then it meets the criteria for Ore's theorem, and thus has a Hamilton cycle.∎
+***Proof:*** If a graph has $deg(v) \geq n/2$ for each vertex, then it meets the criteria for Ore's theorem, and thus has a Hamilton cycle.
 
 Note that these conditions are sufficient but not necessary: there are graphs that have Hamilton circuits but do not meet these conditions.
- - C6 for example (cycle with 6 vertices): each vertex has degree 2 and $2 < 6/2$, but there is a Ham cycle.
+ - $C_{6}$ for example (cycle with 6 vertices): each vertex has degree 2 and $2 < 6/2$, but there is a Hamilton cycle.
 
 ![Example](images/ex4.png)
 

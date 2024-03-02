@@ -25,15 +25,19 @@ An Euler path (or Eulerian path) in a graph $G$ is a simple path that contains e
  - The same as an Euler circuit, but we don't have to end up back at the beginning.
  - The other graph above does have an Euler path.
 
-***Theorem:*** A graph with an Eulerian circuit must be connected, and each vertex has even degree.
-
-***Proof:*** If it's not connected, there's no way to create a circuit.
-
+<details>
+<summary>
+<strong>Theorem</strong>: A graph with an Eulerian circuit must be connected, and each vertex has even degree.
+</summary>
+<strong>Proof</strong>: If it's not connected, there's no way to create a circuit.
+</details>
 When the Eulerian circuit arrives at an edge, it must also leave. This visits two edges on the vertex. When it returns to its starting point, it has visited an even number of edges at each vertex.
 
-***Theorem:*** A connected graph with even degree at each vertex has an Eulerian circuit.
-
-***Proof:*** We will show that a circuit exists by actually building it for a graph with |V|=n. For n=2, the graph must be two vertices connected by two edges. It has an Euler circuit.
+<details>
+<summary>
+<strong>Theorem</strong>: A connected graph with even degree at each vertex has an Eulerian circuit.
+</summary>
+<strong>Proof</strong>: We will show that a circuit exists by actually building it for a graph with |V|=n. For n=2, the graph must be two vertices connected by two edges. It has an Euler circuit.
 
 For $n>2$, pick a vertex v as a starting point. Pick an arbitrary edge leaving v. Continue to pick edges and walk around the graph until you return to v. We know we'll never get stuck since every vertex has even degree: if we walk in, then there's a way to walk out.
 
@@ -42,6 +46,7 @@ This process forms part of our circuit. Let $E_{v}$ be the set of edges visited 
 Consider the graph with edges $E−E_{v}$ and whatever vertices still have an edge adjacent. Each vertex in this graph has even degree (since we removed an even number from each) and it has less than $n$ edges. By strong induction, we can find an Euler circuit for each connected component of this graph.
 
 Since our graph was connected originally, each of these sub-circuits shares a vertex with out $E_{v}$ walk. We can join these together at the shared vertex to form a circuit of all edges in G.
+</details>
 
 An example will help. Suppose we have the graph below start at b and find the initial walk highlighted.
 
@@ -63,12 +68,17 @@ We combine to form a Euler circuit of the original by following one of the compo
 
 ***Corollary 2:*** A graph has an Eulerian path but no Eulerian circuit if and only if it has exactly two vertices with odd degree.
 
-***Proof:*** If we add an edge between the two odd-degree vertices, the graph will have an Eulerian circuit. If we remove the edge, then what remains is an Eulerian path.
+<details>
+<summary>
+<strong>Proof:</strong>
+</summary>
+If we add an edge between the two odd-degree vertices, the graph will have an Eulerian circuit. If we remove the edge, then what remains is an Eulerian path.
 
 Suppose a graph with a different number of odd-degree vertices has an Eulerian path. Add an edge between the two ends of the path. This is a graph with an odd-degree vertex and a Euler circuit. As the above theorem shows, this is a contradiction.
 
 The Euler circuit/path proofs imply an algorithm to find such a circuit/path.
- - It will take $\Theta(|E|)$ running time: we end up traversing each edge once in the “find random cycle” phase, and again when joining cycles. I don't think we can hope for better than that.
+ - It will take $\Theta(|E|)$ running time: we end up traversing each edge once in the "find random cycle" phase, and again when joining cycles. I don't think we can hope for better than that.
+</details>
 
 ### Hamilton Paths and Circuits
 
@@ -97,10 +107,14 @@ By the pigeonhole principle, there must be vertices adjacent to the ends of the 
 
 ***Corollary:*** (Dirac's Theorem) In a graph with $n \geq 3$ vertices, if each vertex has $deg(v) \geq n/2$, then the graph has a Hamilton circuit.
 
-***Proof:*** If a graph has $deg(v) \geq n/2$ for each vertex, then it meets the criteria for Ore's theorem, and thus has a Hamilton cycle.
+<details>
+<summary>
+<strong>Proof:</strong>
+If a graph has $deg(v) \geq n/2$ for each vertex, then it meets the criteria for Ore's theorem, and thus has a Hamilton cycle.
 
 Note that these conditions are sufficient but not necessary: there are graphs that have Hamilton circuits but do not meet these conditions.
  - $C_{6}$ for example (cycle with 6 vertices): each vertex has degree 2 and $2 < 6/2$, but there is a Hamilton cycle.
+</summary>
 
 ![Example](images/ex4.png)
 

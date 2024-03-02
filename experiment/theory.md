@@ -30,9 +30,10 @@ An Euler path (or Eulerian path) in a graph $G$ is a simple path that contains e
 <strong>Theorem</strong>: A graph with an Eulerian circuit must be connected, and each vertex has even degree.
 </summary>
 <strong>Proof</strong>: If it's not connected, there's no way to create a circuit.
-</details>
 When the Eulerian circuit arrives at an edge, it must also leave. This visits two edges on the vertex. When it returns to its starting point, it has visited an even number of edges at each vertex.
+</details>
 
+ 
 <details>
 <summary>
 <strong>Theorem</strong>: A connected graph with even degree at each vertex has an Eulerian circuit.

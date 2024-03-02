@@ -111,11 +111,12 @@ By the pigeonhole principle, there must be vertices adjacent to the ends of the 
 <details>
 <summary>
 <strong>Proof:</strong>
+</summary>
 If a graph has $deg(v) \geq n/2$ for each vertex, then it meets the criteria for Ore's theorem, and thus has a Hamilton cycle.
 
 Note that these conditions are sufficient but not necessary: there are graphs that have Hamilton circuits but do not meet these conditions.
  - $C_{6}$ for example (cycle with 6 vertices): each vertex has degree 2 and $2 < 6/2$, but there is a Hamilton cycle.
-</summary>
+</details>
 
 ![Example](images/ex4.png)
 

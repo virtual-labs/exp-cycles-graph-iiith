@@ -30,9 +30,10 @@ An Euler path (or Eulerian path) in a graph $G$ is a simple path that contains e
 <strong>Theorem</strong>: A graph with an Eulerian circuit must be connected, and each vertex has even degree.
 </summary>
 <strong>Proof</strong>: If it's not connected, there's no way to create a circuit.
-</details>
 When the Eulerian circuit arrives at an edge, it must also leave. This visits two edges on the vertex. When it returns to its starting point, it has visited an even number of edges at each vertex.
+</details>
 
+ 
 <details>
 <summary>
 <strong>Theorem</strong>: A connected graph with even degree at each vertex has an Eulerian circuit.
@@ -110,11 +111,12 @@ By the pigeonhole principle, there must be vertices adjacent to the ends of the 
 <details>
 <summary>
 <strong>Proof:</strong>
+</summary>
 If a graph has $deg(v) \geq n/2$ for each vertex, then it meets the criteria for Ore's theorem, and thus has a Hamilton cycle.
 
 Note that these conditions are sufficient but not necessary: there are graphs that have Hamilton circuits but do not meet these conditions.
  - $C_{6}$ for example (cycle with 6 vertices): each vertex has degree 2 and $2 < 6/2$, but there is a Hamilton cycle.
-</summary>
+</details>
 
 ![Example](images/ex4.png)
 

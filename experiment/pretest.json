@@ -10,10 +10,10 @@
         "d": "eulerian graph"
       },
       "explanations": {
-        "a": "",
-        "b": "",
-        "c": "",
-        "d": "Eulerian circuit in a graph G is a circuit that includes all vertices and edges of G."
+        "a": "Incorrect. An edge graph is not a standard term in graph theory. The concept being asked about relates to traversing all edges and vertices.",
+        "b": "Incorrect. A line graph is a derived graph where vertices represent the edges of the original graph, not what we're looking for here.",
+        "c": "Incorrect. A path complement graph is not related to traversing all edges and vertices of a graph.",
+        "d": "Correct! An Eulerian circuit in a graph G is a circuit that includes all vertices and edges of G exactly once, returning to the starting vertex."
       },
       "correctAnswer": "d",
       "difficulty": "beginner"
@@ -27,10 +27,10 @@
         "d": "Different degree"
       },
       "explanations": {
-        "a": "",
-        "b": "A given connected graph G is a Euler Graph if and only if all vertices of G are of even degree and if exactly two nodes have odd degree then the graph has Euler path but not Euler circuit.",
-        "c": "",
-        "d": ""
+        "a": "Incorrect. Having vertices of the same degree is not sufficient or necessary for a graph to be Eulerian.",
+        "b": "Correct! A connected graph is Eulerian if and only if all vertices have even degree. This ensures you can enter and exit each vertex the same number of times.",
+        "c": "Incorrect. If all vertices had odd degree, it would be impossible to have an Euler circuit.",
+        "d": "Incorrect. The degree difference between vertices is not relevant to whether a graph is Eulerian."
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
@@ -44,10 +44,10 @@
         "d": "Path complement graph"
       },
       "explanations": {
-        "a": "",
-        "b": "",
-        "c": "",
-        "d": ""
+        "a": "Incorrect. An Euler path visits all edges exactly once, not vertices.",
+        "b": "Correct! A Hamiltonian path visits each vertex exactly once (except the first/last vertex).",
+        "c": "Incorrect. A planar graph is one that can be drawn without edge crossings, unrelated to vertex traversal.",
+        "d": "Incorrect. A path complement graph is not related to visiting vertices in sequence."
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
@@ -61,10 +61,10 @@
         "d": "path graph"
       },
       "explanations": {
-        "a": "In the graph bcdefb, no edges are repeated in the walk, which makes it a trail and the start and end vertex b is same making it a cycle graph",
-        "b": "",
-        "c": "",
-        "d": ""
+        "a": "Correct! In the graph bcdefb, no edges are repeated in the walk, and the start and end vertex b is the same, making it a cycle graph.",
+        "b": "Incorrect. A line graph transforms edges into vertices, which is not what's being described here.",
+        "c": "Incorrect. While this does visit vertices, a Hamiltonian graph specifically requires visiting each vertex exactly once.",
+        "d": "Incorrect. A path graph would not return to its starting vertex."
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
@@ -78,13 +78,115 @@
         "d": "45"
       },
       "explanations": {
-        "a": "",
-        "b": "",
-        "c": " In a complete graph of order n, there are n*(n-1)/2 number of edges and degree of each vertex is (n-1). Hence, for a graph of order 9 there should be 36 edges in total.",
-        "d": ""
+        "a": "Incorrect. This is too few edges for a complete graph of order 9.",
+        "b": "Incorrect. This exceeds the maximum possible edges for a graph of order 9.",
+        "c": "Correct! In a complete graph of order n, there are n*(n-1)/2 number of edges. For n=9, we get 9*8/2 = 36 edges.",
+        "d": "Incorrect. While close, this is not the correct calculation for a complete graph of order 9."
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
+    },
+    {
+      "question": "In a directed graph with 6 vertices, what is the maximum possible number of edges?",
+      "answers": {
+        "a": "15",
+        "b": "30",
+        "c": "25",
+        "d": "20"
+      },
+      "explanations": {
+        "a": "Incorrect. This would be the maximum for an undirected graph with 6 vertices.",
+        "b": "Correct! In a directed graph with n vertices, the maximum number of edges is n(n-1). For n=6, we get 6*5=30 edges.",
+        "c": "Incorrect. This number is between the maximum for undirected and directed graphs.",
+        "d": "Incorrect. This is less than the maximum possible edges in a directed graph with 6 vertices."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What is the chromatic number of a complete bipartite graph K3,4?",
+      "answers": {
+        "a": "3",
+        "b": "4",
+        "c": "2",
+        "d": "7"
+      },
+      "explanations": {
+        "a": "Incorrect. A complete bipartite graph needs fewer colors than this.",
+        "b": "Incorrect. This is more colors than necessary for a bipartite graph.",
+        "c": "Correct! A bipartite graph can always be colored with exactly 2 colors, regardless of its size, as vertices can be divided into two independent sets.",
+        "d": "Incorrect. This is the total number of vertices (3+4), not the chromatic number."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "In a simple connected planar graph, if f is the number of faces, e is the number of edges, and v is the number of vertices, what is the value of f - e + v?",
+      "answers": {
+        "a": "1",
+        "b": "2",
+        "c": "3",
+        "d": "0"
+      },
+      "explanations": {
+        "a": "Incorrect. This doesn't satisfy Euler's formula for planar graphs.",
+        "b": "Correct! According to Euler's formula for planar graphs, f - e + v = 2. This is a fundamental property of all simple connected planar graphs.",
+        "c": "Incorrect. The value is constant for all planar graphs but not 3.",
+        "d": "Incorrect. The formula always yields a positive number for planar graphs."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What is the minimum number of edges that must be removed from a complete graph K8 to make it planar?",
+      "answers": {
+        "a": "6",
+        "b": "8",
+        "c": "10",
+        "d": "12"
+      },
+      "explanations": {
+        "a": "Incorrect. Removing 6 edges is insufficient to make K8 planar.",
+        "b": "Incorrect. More edges need to be removed to achieve planarity.",
+        "c": "Incorrect. This is still not enough edges to make K8 planar.",
+        "d": "Correct! For K8, you must remove at least 12 edges to make it planar. This can be proven using Euler's formula and the fact that planar graphs can have at most 3n-6 edges where n is the number of vertices."
+      },
+      "correctAnswer": "d",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "In a tournament graph with 7 vertices, what is the minimum possible number of vertices with a directed path of length 2 to every other vertex?",
+      "answers": {
+        "a": "1",
+        "b": "2",
+        "c": "3",
+        "d": "4"
+      },
+      "explanations": {
+        "a": "Incorrect. One vertex cannot reach all others in exactly 2 steps in a tournament graph of this size.",
+        "b": "Correct! In any tournament with n vertices, there exists a set of at most ⌈log₂(n)⌉ vertices with paths of length at most 2 to all other vertices. For n=7, this means 2 vertices are sufficient.",
+        "c": "Incorrect. While this would work, it's not the minimum number required.",
+        "d": "Incorrect. This is more than necessary for a tournament graph of 7 vertices."
+      },
+      "correctAnswer": "b",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "What is the independence number of the Petersen graph?",
+      "answers": {
+        "a": "5",
+        "b": "4",
+        "c": "3",
+        "d": "2"
+      },
+      "explanations": {
+        "a": "Incorrect. The Petersen graph cannot have an independent set this large.",
+        "b": "Correct! The independence number of the Petersen graph is 4, meaning it has a maximum independent set of 4 vertices. This is optimal and can be proven by showing both that such a set exists and that no larger independent set is possible.",
+        "c": "Incorrect. The Petersen graph has independent sets larger than this.",
+        "d": "Incorrect. This is too small for the maximum independent set in the Petersen graph."
+      },
+      "correctAnswer": "b",
+      "difficulty": "advanced"
     }
   ]
 }

@@ -36,16 +36,16 @@
       "difficulty": "beginner"
     },
     {
-      "question": "A ____ in a graph G is a circuit which consists of every vertex(except first/last vertex) of G exactly once",
+      "question": "A _____ in a graph G is a circuit which visits every vertex of G exactly once (except that the starting vertex is also the ending vertex)",
       "answers": {
-        "a": "Euler path",
-        "b": "Hamiltonian path",
+        "a": "Euler circuit",
+        "b": "Hamiltonian circuit",
         "c": "Planar graph",
         "d": "Path complement graph"
       },
       "explanations": {
-        "a": "Incorrect. An Euler path visits all edges exactly once, not vertices.",
-        "b": "Correct! A Hamiltonian path visits each vertex exactly once (except the first/last vertex).",
+        "a": "Incorrect. An Euler circuit visits all edges exactly once, not vertices.",
+        "b": "Correct! A Hamiltonian circuit visits each vertex exactly once, with the exception that we start and end at the same vertex.",
         "c": "Incorrect. A planar graph is one that can be drawn without edge crossings, unrelated to vertex traversal.",
         "d": "Incorrect. A path complement graph is not related to visiting vertices in sequence."
       },
@@ -53,7 +53,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "Let a graph cab ne denoted as bcdefb a kind of ____",
+      "question": "Let a graph be denoted as bcdefb, this is a kind of ____",
       "answers": {
         "a": "cycle graph",
         "b": "line graph",
@@ -102,91 +102,6 @@
       },
       "correctAnswer": "b",
       "difficulty": "intermediate"
-    },
-    {
-      "question": "What is the chromatic number of a complete bipartite graph K3,4?",
-      "answers": {
-        "a": "3",
-        "b": "4",
-        "c": "2",
-        "d": "7"
-      },
-      "explanations": {
-        "a": "Incorrect. A complete bipartite graph needs fewer colors than this.",
-        "b": "Incorrect. This is more colors than necessary for a bipartite graph.",
-        "c": "Correct! A bipartite graph can always be colored with exactly 2 colors, regardless of its size, as vertices can be divided into two independent sets.",
-        "d": "Incorrect. This is the total number of vertices (3+4), not the chromatic number."
-      },
-      "correctAnswer": "c",
-      "difficulty": "intermediate"
-    },
-    {
-      "question": "In a simple connected planar graph, if f is the number of faces, e is the number of edges, and v is the number of vertices, what is the value of f - e + v?",
-      "answers": {
-        "a": "1",
-        "b": "2",
-        "c": "3",
-        "d": "0"
-      },
-      "explanations": {
-        "a": "Incorrect. This doesn't satisfy Euler's formula for planar graphs.",
-        "b": "Correct! According to Euler's formula for planar graphs, f - e + v = 2. This is a fundamental property of all simple connected planar graphs.",
-        "c": "Incorrect. The value is constant for all planar graphs but not 3.",
-        "d": "Incorrect. The formula always yields a positive number for planar graphs."
-      },
-      "correctAnswer": "b",
-      "difficulty": "intermediate"
-    },
-    {
-      "question": "What is the minimum number of edges that must be removed from a complete graph K8 to make it planar?",
-      "answers": {
-        "a": "6",
-        "b": "8",
-        "c": "10",
-        "d": "12"
-      },
-      "explanations": {
-        "a": "Incorrect. Removing 6 edges is insufficient to make K8 planar.",
-        "b": "Incorrect. More edges need to be removed to achieve planarity.",
-        "c": "Incorrect. This is still not enough edges to make K8 planar.",
-        "d": "Correct! For K8, you must remove at least 12 edges to make it planar. This can be proven using Euler's formula and the fact that planar graphs can have at most 3n-6 edges where n is the number of vertices."
-      },
-      "correctAnswer": "d",
-      "difficulty": "advanced"
-    },
-    {
-      "question": "In a tournament graph with 7 vertices, what is the minimum possible number of vertices with a directed path of length 2 to every other vertex?",
-      "answers": {
-        "a": "1",
-        "b": "2",
-        "c": "3",
-        "d": "4"
-      },
-      "explanations": {
-        "a": "Incorrect. One vertex cannot reach all others in exactly 2 steps in a tournament graph of this size.",
-        "b": "Correct! In any tournament with n vertices, there exists a set of at most ⌈log₂(n)⌉ vertices with paths of length at most 2 to all other vertices. For n=7, this means 2 vertices are sufficient.",
-        "c": "Incorrect. While this would work, it's not the minimum number required.",
-        "d": "Incorrect. This is more than necessary for a tournament graph of 7 vertices."
-      },
-      "correctAnswer": "b",
-      "difficulty": "advanced"
-    },
-    {
-      "question": "What is the independence number of the Petersen graph?",
-      "answers": {
-        "a": "5",
-        "b": "4",
-        "c": "3",
-        "d": "2"
-      },
-      "explanations": {
-        "a": "Incorrect. The Petersen graph cannot have an independent set this large.",
-        "b": "Correct! The independence number of the Petersen graph is 4, meaning it has a maximum independent set of 4 vertices. This is optimal and can be proven by showing both that such a set exists and that no larger independent set is possible.",
-        "c": "Incorrect. The Petersen graph has independent sets larger than this.",
-        "d": "Incorrect. This is too small for the maximum independent set in the Petersen graph."
-      },
-      "correctAnswer": "b",
-      "difficulty": "advanced"
     }
   ]
 }

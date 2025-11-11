@@ -1,3 +1,10 @@
+### Preliminaries
+
+**Graph Terminology:**
+
+- The **order** of a graph is the number of vertices in the graph. A graph with $n$ vertices is said to have order $n$.
+- The **size** of a graph is the number of edges in the graph.
+
 ### Euler Paths and Circuits/Cycle
 
 An **Euler circuit (or Eulerian circuit)** in a graph G is a simple circuit that contains every edge of G.
@@ -6,13 +13,14 @@ An **Euler circuit (or Eulerian circuit)** in a graph G is a simple circuit that
  - We will allow simple or multigraphs for any of the Euler stuff.
 
 
-Euler circuits are one of the oldest problems in graph theory.
- - People wanted to walk around the city of Königsberg and cross every bridge as they went.
- - and end up back at home.
- - The problem turns into one about graphs if you let each bridge be an edge and each island/land mass be a vertex.
- - And Euler solved it, so he gets his name on it.
+**Historical Context:**
 
-In the modern world: you want to walk around the mall without missing any stores, or wasting time walking the same hall again.
+Euler circuits are one of the oldest problems in graph theory, originating from the famous Königsberg bridge problem. Citizens of Königsberg wondered if it was possible to walk through the city, cross every bridge exactly once, and return home. This problem can be modeled as a graph where each bridge represents an edge and each landmass represents a vertex. Leonhard Euler solved this problem in 1736, providing the foundation for graph theory and lending his name to this concept.
+
+**Modern Applications:**
+
+In contemporary settings, Euler circuits have practical applications. For example, when walking through a shopping mall, you might want to pass by every corridor exactly once without retracing your steps, enabling you to visit all stores efficiently while minimizing redundant walking.
+
 
 For example, the first graph has an Euler circuit, but the second doesn't.
  
@@ -73,12 +81,18 @@ We combine to form a Euler circuit of the original by following one of the compo
 <summary>
 <strong>Proof:</strong>
 </summary>
-If we add an edge between the two odd-degree vertices, the graph will have an Eulerian circuit. If we remove the edge, then what remains is an Eulerian path.
 
-Suppose a graph with a different number of odd-degree vertices has an Eulerian path. Add an edge between the two ends of the path. This is a graph with an odd-degree vertex and a Euler circuit. As the above theorem shows, this is a contradiction.
+**Forward direction (If the graph has an Eulerian path but no Eulerian circuit, then it has exactly two vertices with odd degree):**
 
-The Euler circuit/path proofs imply an algorithm to find such a circuit/path.
- - It will take $\Theta(|E|)$ running time: we end up traversing each edge once in the "find random cycle" phase, and again when joining cycles. I don't think we can hope for better than that.
+Suppose a graph $G$ has an Eulerian path from vertex $u$ to vertex $v$ where $u \neq v$. As we traverse this path, every vertex except $u$ and $v$ must have even degree (we enter and leave each intermediate vertex the same number of times). For the starting vertex $u$, we leave one more time than we enter (we begin there), and for the ending vertex $v$, we enter one more time than we leave (we end there). Therefore, both $u$ and $v$ must have odd degree, and all other vertices have even degree.
+
+**Backward direction (If the graph has exactly two vertices with odd degree, then it has an Eulerian path but no Eulerian circuit):**
+
+Suppose a graph $G$ has exactly two vertices $u$ and $v$ with odd degree. Add an edge between $u$ and $v$. Now all vertices have even degree (both $u$ and $v$ now have even degree since we added one edge to each). By the theorem above, this augmented graph has an Eulerian circuit. If we remove the added edge from this circuit, we obtain an Eulerian path from $u$ to $v$ in the original graph $G$.
+
+Since $G$ has vertices of odd degree, by Corollary 1, it cannot have an Eulerian circuit.
+
+**Note:** The Euler circuit/path proofs imply an algorithm to find such a circuit/path. It will take $\Theta(|E|)$ running time: we end up traversing each edge once in the "find random cycle" phase, and again when joining cycles.
 </details>
 
 ### Hamilton Paths and Circuits
@@ -112,10 +126,20 @@ By the pigeonhole principle, there must be vertices adjacent to the ends of the 
 <summary>
 <strong>Proof:</strong>
 </summary>
-If a graph has $deg(v) \geq n/2$ for each vertex, then it meets the criteria for Ore's theorem, and thus has a Hamilton cycle.
 
-Note that these conditions are sufficient but not necessary: there are graphs that have Hamilton circuits but do not meet these conditions.
- - $C_{6}$ for example (cycle with 6 vertices): each vertex has degree 2 and $2 < 6/2$, but there is a Hamilton cycle.
+To show that Dirac's theorem follows from Ore's theorem, we need to verify that if each vertex has degree at least $n/2$, then for any pair of non-adjacent vertices $u$ and $v$, we have $deg(u) + deg(v) \geq n$.
+
+Let $u$ and $v$ be any two non-adjacent vertices in the graph. By the hypothesis of Dirac's theorem:
+- $deg(u) \geq n/2$
+- $deg(v) \geq n/2$
+
+Therefore:
+$$deg(u) + deg(v) \geq n/2 + n/2 = n$$
+
+This means the graph satisfies the condition of Ore's theorem: for each pair of non-adjacent vertices, the sum of their degrees is at least $n$. By Ore's theorem, the graph must have a Hamilton circuit.
+
+**Note:** These conditions are sufficient but not necessary: there are graphs that have Hamilton circuits but do not meet these conditions.
+- For example, $C_{6}$ (cycle with 6 vertices): each vertex has degree 2 and $2 < 6/2$, but there is a Hamilton cycle.
 </details>
 
 ![Example](images/ex4.png)

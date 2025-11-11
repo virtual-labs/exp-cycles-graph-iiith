@@ -87,57 +87,6 @@
       "difficulty": "beginner"
     },
     {
-      "question": "In a weighted graph G, what is the time complexity of finding both an Euler circuit and a minimum spanning tree?",
-      "answers": {
-        "a": "O(V + E log E)",
-        "b": "O(V^2 + E)",
-        "c": "O(E log V)",
-        "d": "O(V^2 log V)"
-      },
-      "explanations": {
-        "a": "Correct! Finding an Euler circuit takes O(V + E) time, and finding a minimum spanning tree using Kruskal's algorithm takes O(E log E) time. The total complexity is dominated by the MST computation, giving O(V + E log E).",
-        "b": "Incorrect. This overestimates the complexity of finding an Euler circuit and underestimates the MST computation.",
-        "c": "Incorrect. While this is the complexity of Prim's algorithm with a binary heap, it doesn't account for finding the Euler circuit.",
-        "d": "Incorrect. This is much higher than necessary and doesn't accurately represent either operation's complexity."
-      },
-      "correctAnswer": "a",
-      "difficulty": "intermediate"
-    },
-    {
-      "question": "What is the maximum number of edges possible in a planar graph with n vertices (n ≥ 3) that has no triangular faces?",
-      "answers": {
-        "a": "3n - 6",
-        "b": "2n - 4",
-        "c": "2n - 2",
-        "d": "3n - 3"
-      },
-      "explanations": {
-        "a": "Incorrect. This is the maximum number of edges for any planar graph, but the constraint of no triangular faces reduces this number.",
-        "b": "Correct! For a planar graph with no triangular faces, each face must have at least 4 edges. Using Euler's formula and the fact that each edge belongs to two faces, we can prove that the maximum number of edges is 2n - 4.",
-        "c": "Incorrect. This exceeds the actual maximum possible edges for a planar graph with no triangular faces.",
-        "d": "Incorrect. This would allow too many edges for a planar graph with the given constraint."
-      },
-      "correctAnswer": "b",
-      "difficulty": "advanced"
-    },
-    {
-      "question": "In a tournament graph with n vertices, what is the minimum number of edges that must be reversed to make the graph strongly connected?",
-      "answers": {
-        "a": "⌈log₂n⌉",
-        "b": "⌊n/2⌋",
-        "c": "n-1",
-        "d": "⌈(n-1)/2⌉"
-      },
-      "explanations": {
-        "a": "Incorrect. This is related to the number of vertices needed for 2-step paths, not edge reversals for strong connectivity.",
-        "b": "Incorrect. This is too many edges - a tournament can be made strongly connected with fewer reversals.",
-        "c": "Incorrect. This would be the number of edges in a spanning tree, but we need fewer reversals.",
-        "d": "Correct! In a tournament graph, reversing ⌈(n-1)/2⌉ edges is both necessary and sufficient to ensure strong connectivity. This can be proved using the properties of tournament graphs and their strongly connected components."
-      },
-      "correctAnswer": "d",
-      "difficulty": "advanced"
-    },
-    {
       "question": "In a graph G with n vertices, if the sum of degrees of any two non-adjacent vertices is at least n, then G must contain a:",
       "answers": {
         "a": "Euler circuit",
@@ -170,23 +119,6 @@
       },
       "correctAnswer": "a",
       "difficulty": "intermediate"
-    },
-    {
-      "question": "In a 3-regular connected graph G with 8 vertices, how many different perfect matchings are possible?",
-      "answers": {
-        "a": "3",
-        "b": "6",
-        "c": "9",
-        "d": "12"
-      },
-      "explanations": {
-        "a": "Incorrect. This underestimates the number of possibilities - a 3-regular graph with 8 vertices has more ways to form perfect matchings.",
-        "b": "Incorrect. While closer, this doesn't account for all possible combinations in a 3-regular graph of this size.",
-        "c": "Correct! In a 3-regular graph with 8 vertices: 1) Each vertex has degree 3, giving 12 edges total. 2) A perfect matching needs 4 edges to cover all 8 vertices. 3) Using Hall's Marriage Theorem and counting principle, we can prove there are exactly 9 different ways to select 4 edges that don't share vertices.",
-        "d": "Incorrect. This counts the total number of edges in the graph (8*3/2 = 12) rather than the number of possible perfect matchings."
-      },
-      "correctAnswer": "c",
-      "difficulty": "advanced"
     }
   ]
 }

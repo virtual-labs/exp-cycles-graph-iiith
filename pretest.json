@@ -1,0 +1,107 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "The _____ of a graph G consist of all vertices and edges of G",
+      "answers": {
+        "a": "edge graph",
+        "b": "line graph",
+        "c": "path complement graph",
+        "d": "eulerian graph"
+      },
+      "explanations": {
+        "a": "Incorrect. An edge graph is not a standard term in graph theory. The concept being asked about relates to traversing all edges and vertices.",
+        "b": "Incorrect. A line graph is a derived graph where vertices represent the edges of the original graph, not what we're looking for here.",
+        "c": "Incorrect. A path complement graph is not related to traversing all edges and vertices of a graph.",
+        "d": "Correct! An Eulerian circuit in a graph G is a circuit that includes all vertices and edges of G exactly once, returning to the starting vertex."
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "A given connected graph G is a Euler Graph if and only if all vertices of G are of",
+      "answers": {
+        "a": "Same degree",
+        "b": "Even degree",
+        "c": "Odd degree",
+        "d": "Different degree"
+      },
+      "explanations": {
+        "a": "Incorrect. Having vertices of the same degree is not sufficient or necessary for a graph to be Eulerian.",
+        "b": "Correct! A connected graph is Eulerian if and only if all vertices have even degree. This ensures you can enter and exit each vertex the same number of times.",
+        "c": "Incorrect. If all vertices had odd degree, it would be impossible to have an Euler circuit.",
+        "d": "Incorrect. The degree difference between vertices is not relevant to whether a graph is Eulerian."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "A _____ in a graph G is a circuit which visits every vertex of G exactly once (except that the starting vertex is also the ending vertex)",
+      "answers": {
+        "a": "Euler circuit",
+        "b": "Hamiltonian circuit",
+        "c": "Planar graph",
+        "d": "Path complement graph"
+      },
+      "explanations": {
+        "a": "Incorrect. An Euler circuit visits all edges exactly once, not vertices.",
+        "b": "Correct! A Hamiltonian circuit visits each vertex exactly once, with the exception that we start and end at the same vertex.",
+        "c": "Incorrect. A planar graph is one that can be drawn without edge crossings, unrelated to vertex traversal.",
+        "d": "Incorrect. A path complement graph is not related to visiting vertices in sequence."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Let a graph be denoted as bcdefb, this is a kind of ____",
+      "answers": {
+        "a": "cycle graph",
+        "b": "line graph",
+        "c": "hamiltonian graph",
+        "d": "path graph"
+      },
+      "explanations": {
+        "a": "Correct! In the graph bcdefb, no edges are repeated in the walk, and the start and end vertex b is the same, making it a cycle graph.",
+        "b": "Incorrect. A line graph transforms edges into vertices, which is not what's being described here.",
+        "c": "Incorrect. While this does visit vertices, a Hamiltonian graph specifically requires visiting each vertex exactly once.",
+        "d": "Incorrect. A path graph would not return to its starting vertex."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "How many edges are there in a complete graph of order 9?",
+      "answers": {
+        "a": "18",
+        "b": "72",
+        "c": "36",
+        "d": "45"
+      },
+      "explanations": {
+        "a": "Incorrect. This is too few edges for a complete graph of order 9.",
+        "b": "Incorrect. This exceeds the maximum possible edges for a graph of order 9.",
+        "c": "Correct! In a complete graph of order n, there are n*(n-1)/2 number of edges. For n=9, we get 9*8/2 = 36 edges.",
+        "d": "Incorrect. While close, this is not the correct calculation for a complete graph of order 9."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In a directed graph with 6 vertices, what is the maximum possible number of edges?",
+      "answers": {
+        "a": "15",
+        "b": "30",
+        "c": "25",
+        "d": "20"
+      },
+      "explanations": {
+        "a": "Incorrect. This would be the maximum for an undirected graph with 6 vertices.",
+        "b": "Correct! In a directed graph with n vertices, the maximum number of edges is n(n-1). For n=6, we get 6*5=30 edges.",
+        "c": "Incorrect. This number is between the maximum for undirected and directed graphs.",
+        "d": "Incorrect. This is less than the maximum possible edges in a directed graph with 6 vertices."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    }
+  ]
+}

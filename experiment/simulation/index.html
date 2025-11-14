@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cycles in a Graph - Discrete Mathematics</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="mobile-detection.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <div class="max-w-5xl mx-auto px-6 pb-16 space-y-12">
+
+    <section id="challenge-section" class="bg-white p-6 rounded-xl shadow-lg mb-6">
+      <div class="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
+        <div class="flex-1">
+          <h3 class="font-semibold text-blue-800 mb-3">Challenge</h3>
+          <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+            <select id="challengeSelect" class="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              <option value="">Select a cycle type to start</option>
+              <option value="hamiltonian">Find Hamiltonian Cycle</option>
+              <option value="eulerian">Find Eulerian Cycle</option>
+              <option value="tsp">Find TSP Cycle</option>
+            </select>
+            <button onclick="checkCycle()" class="btn bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded text-sm" id="checkBtn" disabled>
+              Check Cycle
+            </button>
+          </div>
+          <p id="challengeQuestion" class="text-gray-600 mt-2 text-sm">
+            Select a cycle type to start!
+          </p>
+        </div>
+        <div class="btn-group">
+          <button onclick="generateNewGraph()" class="btn bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded text-sm">
+            New Graph
+          </button>
+          <button onclick="clearPath()" class="btn bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm">
+            Clear Path
+          </button>
+          <button onclick="undoLastMove()" class="btn bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded text-sm" id="undoBtn" disabled>
+            Undo
+          </button>
+        </div>
+      </div>
+      <div id="feedback" class="mt-3 p-2 rounded hidden"></div>
+      <div id="pathDisplay" class="mt-3 p-2 bg-gray-100 rounded text-sm hidden">
+        <strong>Current Path:</strong> <span id="currentPath">None</span>
+      </div>
+    </section>
+
+    <section id="game-section" class="bg-white p-6 rounded-xl shadow-lg">
+      <div class="game-container">
+        <canvas id="graphCanvas"></canvas>
+      </div>
+    </section>
+
+    <!-- Floating Controls Button -->
+    <div class="floating-button primary" id="controlsButton">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+      </svg>
+    </div>
+    
+    <!-- Floating Controls Panel -->
+    <div class="floating-panel" id="controlsPanel">
+      <div class="floating-panel-header">
+        <h3 class="panel-title">Graph Parameters</h3>
+        <div class="floating-panel-close" id="controlsPanelClose">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </div>
+      </div>
+      <div class="floating-panel-content space-y-4">
+        <div class="bg-indigo-50 p-3 rounded-lg">
+          <h3 class="font-semibold text-sm text-indigo-800 mb-3">Parameters</h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">
+                Vertices: <span id="vertexCountValue">6</span>
+              </label>
+              <input type="range" id="vertexCountSlider" min="4" max="8" value="6" step="1" 
+                     class="w-full accent-indigo-600" onchange="updateVertexCount()">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">
+                Edge Density: <span id="edgeDensityValue">0.6</span>
+              </label>
+              <input type="range" id="edgeDensitySlider" min="0.3" max="0.9" value="0.6" step="0.1" 
+                     class="w-full accent-indigo-600" onchange="updateEdgeDensity()">
+            </div>
+          </div>
+        </div>
+        <div id="graphInfo" class="bg-green-50 p-3 rounded-lg">
+          <h3 class="font-semibold text-sm text-green-800 mb-2">Graph Info</h3>
+          <div class="text-xs space-y-1 text-gray-600">
+            <p>Vertices: <span id="vertexCount">6</span></p>
+            <p>Edges: <span id="edgeCount">0</span></p>
+            <p>Degree sequence: <span id="degreeSequence">-</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Info Button -->
+    <div class="floating-button secondary" id="infoButton">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+      </svg>
+    </div>
+    
+    <!-- Floating Info Panel -->
+    <div class="floating-panel" id="infoPanel">
+      <div class="floating-panel-header">
+        <h3 class="panel-title">Cycle Types</h3>
+        <div class="floating-panel-close" id="infoPanelClose">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </div>
+      </div>
+      <div class="floating-panel-content space-y-4">
+        <div class="bg-green-50 p-3 rounded-lg">
+          <h3 class="font-semibold text-sm text-green-800 mb-2">Hamiltonian Cycle</h3>
+          <div class="text-xs space-y-1 text-gray-600">
+            <p>• Visits each vertex exactly once</p>
+            <p>• Returns to starting vertex</p>
+            <p>• NP-complete problem</p>
+          </div>
+        </div>
+        <div class="bg-blue-50 p-3 rounded-lg">
+          <h3 class="font-semibold text-sm text-blue-800 mb-2">Eulerian Cycle</h3>
+          <div class="text-xs space-y-1 text-gray-600">
+            <p>• Traverses each edge exactly once</p>
+            <p>• Returns to starting vertex</p>
+            <p>• Exists if all vertices have even degree</p>
+          </div>
+        </div>
+        <div class="bg-purple-50 p-3 rounded-lg">
+          <h3 class="font-semibold text-sm text-purple-800 mb-2">TSP Cycle</h3>
+          <div class="text-xs space-y-1 text-gray-600">
+            <p>• Shortest Hamiltonian cycle</p>
+            <p>• Minimizes total edge weight</p>
+            <p>• NP-hard optimization problem</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Theory Section -->
+    <section class="grid md:grid-cols-3 gap-8">
+      <div class="card bg-white p-6 rounded-xl shadow">
+        <h2 class="text-2xl font-semibold text-green-700 mb-3">Hamiltonian Cycle</h2>
+        <div class="space-y-3 text-sm">
+          <p class="text-gray-700">A Hamiltonian cycle visits every vertex exactly once and returns to the starting vertex.</p>
+          <div class="bg-green-100 p-3 rounded">
+            <p class="font-medium text-green-800 mb-2">Properties:</p>
+            <ul class="list-disc pl-4 space-y-1 text-gray-700">
+              <li>Uses exactly n edges for n vertices</li>
+              <li>Each vertex has degree 2 in the cycle</li>
+              <li>Finding one is NP-complete</li>
+            </ul>
+          </div>
+          <div class="bg-gray-100 p-3 rounded">
+            <p class="font-medium text-gray-800">Necessary conditions:</p>
+            <p class="text-gray-700">For a graph to have a Hamiltonian cycle, it must be connected and typically needs high vertex connectivity.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card bg-white p-6 rounded-xl shadow">
+        <h2 class="text-2xl font-semibold text-blue-700 mb-3">Eulerian Cycle</h2>
+        <div class="space-y-3 text-sm">
+          <p class="text-gray-700">An Eulerian cycle traverses every edge exactly once and returns to the starting vertex.</p>
+          <div class="bg-blue-100 p-3 rounded">
+            <p class="font-medium text-blue-800 mb-2">Euler's Theorem:</p>
+            <p class="text-gray-700">A connected graph has an Eulerian cycle if and only if every vertex has even degree.</p>
+          </div>
+          <div class="bg-gray-100 p-3 rounded">
+            <p class="font-medium text-gray-800">Algorithm:</p>
+            <p class="text-gray-700">Hierholzer's algorithm can find an Eulerian cycle in O(E) time when one exists.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-white p-6 rounded-xl shadow">
+        <h2 class="text-2xl font-semibold text-purple-700 mb-3">TSP Cycle</h2>
+        <div class="space-y-3 text-sm">
+          <p class="text-gray-700">The Traveling Salesperson Problem finds the shortest Hamiltonian cycle.</p>
+          <div class="bg-purple-100 p-3 rounded">
+            <p class="font-medium text-purple-800 mb-2">Optimization:</p>
+            <p class="text-gray-700">Among all Hamiltonian cycles, find the one with minimum total weight.</p>
+          </div>
+          <div class="bg-gray-100 p-3 rounded">
+            <p class="font-medium text-gray-800">Complexity:</p>
+            <p class="text-gray-700">NP-hard problem. Approximation algorithms and heuristics are used for large instances.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="Cycles in a Graph.js"></script>
+</body>
+</html>

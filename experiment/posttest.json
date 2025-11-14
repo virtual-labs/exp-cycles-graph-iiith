@@ -2,38 +2,123 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "The total number of Hamiltonian circuits in a complete undirected graph of n vertices will be ____ ",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "(n-1)!",
+        "b": "(n-1)!/2",
+        "c": "(n+1)!",
+        "d": "(n+1)!/2"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Incorrect. While this counts all possible arrangements of n-1 vertices, it overcounts by including both clockwise and counterclockwise versions of the same circuit.",
+        "b": "Correct! In a complete graph, we can start at any vertex and arrange the remaining n-1 vertices in (n-1)! ways. However, since each circuit can be traversed in both directions (clockwise and counterclockwise), we divide by 2 to avoid counting each circuit twice.",
+        "c": "Incorrect. This would count arrangements of n+1 vertices, which is more than the actual number of vertices in the graph.",
+        "d": "Incorrect. This uses n+1 vertices instead of n-1, leading to an incorrect count of possible circuits."
       },
-      "correctAnswer": "a",
+      "correctAnswer": "b",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "If G is a simple graph with n-vertices and n>=3, the condition for G has a Hamiltonian circuit is _________",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "the degree of each vertex is at most n/2",
+        "b": "the degree of each vertex is equal to n",
+        "c": "the degree of every vertex is at least n+1/2",
+        "d": "the degree of every vertex in G is at least n/2"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Incorrect. Having vertices with degree at most n/2 could result in a graph that's too sparse to guarantee a Hamiltonian circuit.",
+        "b": "Incorrect. This condition is too strict - it would require the graph to be complete, which isn't necessary for having a Hamiltonian circuit.",
+        "c": "Incorrect. This condition is mathematically impossible as the maximum degree in a simple graph with n vertices is n-1.",
+        "d": "Correct! This is Dirac's theorem: if G is a simple graph with n vertices (n≥3) and minimum degree ≥n/2, then G has a Hamiltonian circuit. This ensures enough connectivity to traverse all vertices."
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The time complexity to find a Eulerian path in a graph of vertex V and edge E is",
+      "answers": {
+        "a": "O(V^2)",
+        "b": "O(V+E-1)",
+        "c": "O(V+E)",
+        "d": "O(E+1)"
+      },
+      "explanations": {
+        "a": "Incorrect. This overestimates the complexity - we don't need to check all pairs of vertices.",
+        "b": "Incorrect. While close to the correct answer, subtracting 1 doesn't affect the big-O notation and isn't necessary.",
+        "c": "Correct! Finding a Eulerian path requires checking connectivity (O(V+E)) and verifying vertex degrees (O(V)). The total complexity is O(V+E) as we need to visit each vertex and edge exactly once.",
+        "d": "Incorrect. This ignores the necessary vertex checks and doesn't properly represent the graph traversal complexity."
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
+    },
+    {
+      "question": "Consider a connected multigraph with 8 vertices has an Euler circuit. Which of the following degrees is possible for each vertex so that the graph has an Euler circuit?",
+      "answers": {
+        "a": "3",
+        "b": "4",
+        "c": "5",
+        "d": "7"
+      },
+      "explanations": {
+        "a": "Incorrect. An odd degree (3) cannot be part of an Euler circuit as you wouldn't be able to exit the vertex after entering it an odd number of times.",
+        "b": "Correct! For an Euler circuit to exist, all vertices must have even degree. Among the given options, 4 is the only even number, making it the only possible degree for each vertex.",
+        "c": "Incorrect. Like option 'a', an odd degree (5) would make it impossible to have an Euler circuit.",
+        "d": "Incorrect. An odd degree (7) would prevent the formation of an Euler circuit as you can't enter and exit the same number of times."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The traveling salesman problem involves n cities with paths connecting the cities. The time taken for traversing through all the cities, without knowing in advance the length of a minimum tour, is",
+      "answers": {
+        "a": "O(n)",
+        "b": "O(n^2)",
+        "c": "O(n!)",
+        "d": "O(2^n)"
+      },
+      "explanations": {
+        "a": "Incorrect. Linear time is impossible for TSP as we need to consider all possible permutations of cities.",
+        "b": "Incorrect. Quadratic time would be too efficient for this NP-hard problem - it needs to check all possible tours.",
+        "c": "Correct! The brute force approach requires checking all possible permutations of n cities, leading to n! possible tours. Each tour needs to be evaluated to find the minimum cost path.",
+        "d": "Incorrect. While exponential, 2^n is actually less than n! for large n, making it too optimistic for the TSP without additional information."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In a graph G with n vertices, if the sum of degrees of any two non-adjacent vertices is at least n, then G must contain a:",
+      "answers": {
+        "a": "Euler circuit",
+        "b": "Perfect matching",
+        "c": "Hamiltonian cycle",
+        "d": "Spanning tree"
+      },
+      "explanations": {
+        "a": "Incorrect. The sum of degrees condition relates to vertex connectivity and paths, not to the existence of an Euler circuit which requires even degrees.",
+        "b": "Incorrect. While this condition ensures good connectivity, it doesn't guarantee a perfect matching which requires different properties.",
+        "c": "Correct! This is Ore's Theorem: if G is a simple graph with n≥3 vertices where deg(u) + deg(v) ≥ n for every pair of non-adjacent vertices u and v, then G contains a Hamiltonian cycle. This is a stronger result than Dirac's theorem.",
+        "d": "Incorrect. While the graph would contain a spanning tree, this is a much weaker conclusion than what the given condition guarantees."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "Given a connected graph G with n vertices and n edges, which of the following must be true?",
+      "answers": {
+        "a": "G contains exactly one cycle",
+        "b": "G is bipartite",
+        "c": "G has a perfect matching",
+        "d": "G has an Euler path"
+      },
+      "explanations": {
+        "a": "Correct! In a connected graph, if |E| = |V| = n, then the graph must contain exactly one cycle. This follows from the fact that a tree has n-1 edges, so adding one more edge must create exactly one cycle (unicyclic graph).",
+        "b": "Incorrect. The number of edges and vertices doesn't determine whether a graph is bipartite - this depends on the structure of connections.",
+        "c": "Incorrect. Having n vertices and n edges doesn't guarantee a perfect matching, as the edges might not be distributed in a way that allows pairing all vertices.",
+        "d": "Incorrect. A graph with n vertices and n edges might not have an Euler path as the degrees of vertices aren't guaranteed to satisfy Euler path conditions."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
     }
   ]
 }
